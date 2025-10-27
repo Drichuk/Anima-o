@@ -1,122 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Linha do Tempo</title>
-  <link rel="stylesheet" href="index.css">
-</head>
-<body>
-  <div class="container">
-    <h1>Linha do Tempo</h1>
-    <div id="timeline">
-      <div class="timeline-item" id="month1">
-        <div class="month">Mês 13</div>
-        <div class="description">O bebê começou a se equilibrar melhor ao ficar em pé e dar alguns passinhos segurando móveis. Cada nova tentativa é uma descoberta!</div>
-      </div>
-      <div class="timeline-item" id="month2">
-        <div class="month">Mês 16</div>
-        <div class="description">O bebê começou a colocar os brinquedos na boca. Pequenos avanços cheios de cuidado!</div>
-      </div>
-      <div class="timeline-item" id="month3">
-        <div class="month">Mês 18</div>
-        <div class="description">Imitando palavras e sons do dia a dia. A comunicação está começando a ganhar forma!</div>
-      </div>
-      <div class="timeline-item" id="month4">
-        <div class="month">Mês 20</div>
-        <div class="description">Imita gestos dos pais com mais frequência — momentos divertidos em família!</div>
-      </div>
-      <div class="timeline-item" id="month5">
-        <div class="month">Mês 21</div>
-        <div class="description">Consegue descer de lugares, como sofás e cadeiras. Crescendo com autonomia!</div>
-      </div>
-      <div class="timeline-item" id="month6">
-        <div class="month">Mês 23</div>
-        <div class="description">Brincadeiras começam, como rabiscar as paredes. Risadas garantidas para quase toda a família!</div>
-      </div>
-      <div class="timeline-item" id="month7">
-        <div class="month">Mês 25</div>
-        <div class="description">Melhora na coordenação motora: anda com mais segurança e sobe degraus com ajuda.</div>
-      </div>
-      <div class="timeline-item" id="month8">
-        <div class="month">Mês 27</div>
-        <div class="description">Vocabulário em crescimento, com palavras simples e tentativas de formar pequenas frases.</div>
-      </div>
-      <div class="timeline-item" id="month9">
-        <div class="month">Mês 29</div>
-        <div class="description">Mostra empatia e carinho, abraçando e confortando pessoas próximas!</div>
-      </div>
-      <div class="timeline-item" id="month10">
-        <div class="month">Mês 31</div>
-        <div class="description">Fala as primeiras palavras com clareza. Cada nova palavra é uma conquista!</div>
-      </div>
-    </div>
-  </div>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
 
-  <!-- Canvas para confetes -->
-  <canvas id="confetti" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none;"></canvas>
-
-  <script>
-  const canvas = document.getElementById('confetti');
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  let confettiParticles = [];
-
-  function explodeConfetti() {
-      confettiParticles = [];
-      for(let i=0; i<100; i++){
-          confettiParticles.push({
-              x: canvas.width/2,
-              y: canvas.height/2,
-              r: Math.random() * 6 + 4,
-              color: `hsl(${Math.random()*360}, 100%, 50%)`,
-              speedX: (Math.random() - 0.5) * 10,
-              speedY: (Math.random() - 1.5) * 10,
-              opacity: 1,
-              decay: Math.random() * 0.02 + 0.01
-          });
-      }
-  }
-
-  function drawConfetti(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      confettiParticles.forEach(p => {
-          ctx.globalAlpha = p.opacity;
-          ctx.fillStyle = p.color;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-          ctx.fill();
-          p.x += p.speedX;
-          p.y += p.speedY;
-          p.opacity -= p.decay;
-      });
-      confettiParticles = confettiParticles.filter(p => p.opacity > 0);
-      requestAnimationFrame(drawConfetti);
-  }
-
-  const items = document.querySelectorAll('.timeline-item');
-  let currentIndex = 0;
-
-  function showNextItem() {
-      const current = items[currentIndex];
-      if (current.classList.contains('active')) {
-          current.classList.add('fade-out');
-          setTimeout(() => {
-              current.classList.remove('active', 'fade-out');
-          }, 700);
-      }
-      currentIndex = (currentIndex + 1) % items.length;
-      const next = items[currentIndex];
-      setTimeout(() => {
-          next.classList.add('active');
-          if(currentIndex !== 0){ explodeConfetti(); }
-      }, 700);
-  }
-
-  items[0].classList.add('active');
-  drawConfetti();
-  setInterval(showNextItem, 10000);
-  </script>
-</body>
+  </head>
+  <body>
+    <main>
+    </main>
+    <script src="sketch.js"></script>
+  </body>
 </html>
