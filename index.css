@@ -1,0 +1,70 @@
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: linear-gradient(to bottom, #FFE0B2, #FFCCBC);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  color: #4E342E;
+}
+
+.container {
+  text-align: center;
+  max-width: 900px;
+  padding: 20px 20px 0 20px;
+  position: relative;
+  top: 0;
+}
+
+h1 {
+  font-size: 2.8em;
+  margin-bottom: 40px;
+  color: #FF7043;
+  text-shadow: 2px 2px 5px #FFF3E0;
+}
+
+.timeline-item {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  background: #FFF8E1;
+  border: 3px dashed #FFAB91;
+  border-radius: 20px;
+  padding: 30px 40px;
+  width: 80%;
+  max-width: 700px;
+  font-size: 1.3em;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: all 0.7s ease;
+}
+
+.timeline-item.active {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.timeline-item.fade-out {
+  opacity: 0;
+  transform: translateX(-50%) scale(0.8) rotateY(90deg);
+}
+
+.month {
+  font-weight: bold;
+  font-size: 1.6em;
+  color: #FF5722;
+  margin-bottom: 10px;
+}
+
+.description {
+  line-height: 1.5;
+  font-size: 1.2em;
+  color: #6D4C41;
+}
+
+.month::before {
+  content: "🎉 ";
+}
